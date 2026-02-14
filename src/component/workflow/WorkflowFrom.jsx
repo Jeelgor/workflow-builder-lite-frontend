@@ -3,6 +3,7 @@ import TextInput from "../form/TextInput";
 import StepsList from "./StepList";
 import PrimaryButton from "../form/PrimaryButton";
 import api from "../../api/client";
+import { toast } from "react-toastify";
 
 export default function WorkflowForm({ onWorkflowCreated }) {
     const [name, setName] = useState("");
@@ -33,6 +34,7 @@ export default function WorkflowForm({ onWorkflowCreated }) {
             setName("");
             setSteps([{ type: "clean_text" }]);
             onWorkflowCreated();
+            toast("Workflow Created")
         } catch (err) {
             setError("Failed to create workflow");
         }
