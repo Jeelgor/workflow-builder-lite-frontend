@@ -21,13 +21,7 @@ export default function StepItem({ step, index, onChange, onRemove }) {
 
             <button
                 onClick={() => onRemove(index)}
-                style={{
-                    marginTop: 22,
-                    background: "transparent",
-                    border: "none",
-                    color: "red",
-                    cursor: "pointer",
-                }}
+                className="mt-5.5 bg-transparent border-0 text-red-500 cursor-pointer"
             >
                 Remove
             </button>

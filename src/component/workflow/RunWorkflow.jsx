@@ -2,6 +2,7 @@ import { useState } from "react";
 import api from "../../api/client";
 import TextInput from "../form/TextInput";
 import PrimaryButton from "../form/PrimaryButton";
+import { toast } from "react-toastify";
 
 export default function RunWorkflow({ workflows }) {
 
@@ -10,7 +11,7 @@ export default function RunWorkflow({ workflows }) {
     const [result, setResult] = useState(null);
     const [loading, setLoading] = useState(false);
     const handleRun = async () => {
-        if (!selectedWorkflow) return alert("Select workflow");
+        if (!selectedWorkflow) return toast("Please Select workflow");
 
         setLoading(true);
         const res = await api.post(
@@ -29,12 +30,7 @@ export default function RunWorkflow({ workflows }) {
                 <select
                     value={selectedWorkflow}
                     onChange={(e) => setSelectedWorkflow(e.target.value)}
-                    style={{
-                        width: "100%",
-                        padding: "10px",
-                        borderRadius: 6,
-                        border: "1px solid #ccc",
-                    }}
+                    className="w-full px-2.5 py-2.5 rounded-md border border-gray-300"
                 >
                     <option value="">Select...</option>
                     {workflows.map((wf) => (
@@ -62,12 +58,7 @@ export default function RunWorkflow({ workflows }) {
                     {result.stepOutputs.map((step, i) => (
                         <div
                             key={i}
-                            style={{
-                                border: "1px solid #eee",
-                                padding: 10,
-                                marginBottom: 8,
-                                borderRadius: 6,
-                            }}
+                            className="border border-gray-200 p-2.5 mb-2 rounded-md"
                         >
                             <strong>{step.stepType}</strong>
                             <p>{step.output}</p>

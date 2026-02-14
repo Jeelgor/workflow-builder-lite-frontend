@@ -32,12 +32,7 @@ const WorkflowRunHistory = () => {
                 runs.map((run) => (
                     <div
                         key={run._id}
-                        style={{
-                            border: "1px solid #ddd",
-                            padding: 12,
-                            marginBottom: 12,
-                            borderRadius: 6,
-                        }}
+                        className="border border-gray-300 p-3 mb-3 rounded-md"
                     >
                         <p><strong>Workflow:</strong> {run.workflowName || run.workflowId}</p>
                         <p><strong>Input:</strong> {run.inputText.slice(0, 80)}...</p>
@@ -45,15 +40,7 @@ const WorkflowRunHistory = () => {
 
                         <button
                             onClick={() => toggleRun(run._id)}
-                            style={{
-                                marginTop: 8,
-                                background: "#111",
-                                color: "#fff",
-                                padding: "6px 10px",
-                                borderRadius: 4,
-                                border: "none",
-                                cursor: "pointer",
-                            }}
+                            className="mt-2 bg-gray-900 text-white py-1.5 px-2.5 rounded border-0 cursor-pointer"
                         >
                             {openRunId === run._id ? "Hide Details" : "View Details"}
                         </button>
@@ -63,11 +50,7 @@ const WorkflowRunHistory = () => {
                                 {run.stepOutputs.map((step, i) => (
                                     <div
                                         key={i}
-                                        style={{
-                                            borderTop: "1px solid #eee",
-                                            paddingTop: 8,
-                                            marginTop: 8,
-                                        }}
+                                        className="border-t border-gray-200 pt-2 mt-2"
                                     >
                                         <strong>{step.stepType}</strong>
                                         <p style={{ whiteSpace: "pre-wrap" }}>{step.output}</p>
