@@ -3,7 +3,7 @@ import Header from "../component/layout/Header";
 import SectionCard from "../component/layout/SectionCard";
 import WorkflowForm from "../component/workflow/WorkflowFrom";
 import RunWorkflow from "../component/workflow/RunWorkflow";
-import WorkflowRunHistory from "../component/workflow/WorkflowRunHistory";
+import WorkflowRunHistory from "../component/workflow/WorkFlowRunHistory";
 import { useEffect, useState } from "react";
 import api from "../api/client";
 
