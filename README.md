@@ -1,16 +1,71 @@
-# React + Vite
+# Workflow Builder Lite Backend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 1. What is implemented
 
-Currently, two official plugins are available:
+* User can create workflows
+* User can run a workflow by providing input text
+* Workflow executes steps sequentially (e.g., clean text → summarize)
+* System stores and returns the last 5 workflow runs
+* Health endpoint to check backend, database, and LLM status
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 2. How to run locally
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Step 1** — Clone the repository
 
-## Expanding the ESLint configuration
+```
+git clone https://github.com/Jeelgor/workflow-builder-lite-frontend.git
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Step 2** — Install dependencies
+
+```
+npm install
+```
+
+**Step 3** — Start the server
+
+```
+npm run dev
+```
+
+Server will run on:
+
+```
+http://localhost:5173
+```
+
+## Basic Checks & Testing
+
+To make sure the application works correctly, I performed manual testing across both frontend and backend flows. The goal was to verify core functionality, handle edge cases, and ensure the system behaves reliably.
+
+### Frontend Checks
+
+**Workflow Creation**
+
+* Verified that a workflow cannot be created with an empty name
+* Confirmed steps can be added and removed dynamically
+* Ensured newly created workflows appear immediately without page refresh
+
+**Workflow Execution**
+
+* Prevented running a workflow without selecting one
+* Prevented execution with empty input text
+* Verified outputs are displayed step-by-step in the correct order
+* Checked loading state while workflow is running
+
+**Run History**
+
+* Confirmed only the last 5 runs are displayed
+* Verified expand/collapse works for viewing step outputs
+
+**Health Page**
+
+* Confirmed system status is displayed clearly
+* Tested failure scenario by using an invalid API key to ensure LLM status changes
+
+**General UI**
+
+* Checked for console errors
+* Verified page refresh and navigation behavior
